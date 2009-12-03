@@ -27,7 +27,7 @@ dos2unix -U *.txt
 chmod -x *.txt docs/*
 
 %build
-lazbuild --pcp=%{_sysconfdir}/lazarus --widgetset=gtk2 -B winff.lpr
+lazbuild --widgetset=gtk2 -B winff.lpr
 
 %install
 rm -rf %{buildroot}
