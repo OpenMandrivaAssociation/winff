@@ -11,6 +11,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	lazarus
 BuildRequires:	dos2unix
 Requires:	ffmpeg
+Requires:	xterm
 
 %description
 WinFF is a GUI for the command line video converter, FFMPEG. It will 
