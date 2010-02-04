@@ -1,6 +1,6 @@
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
-Version:	1.1.1
+Version:	1.2.0
 Release:	%mkrel 1
 License:	GPLv3
 Group:		Video
@@ -22,9 +22,8 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 %prep
 %setup -q -n %{name}
 
-# Fix executable perms and EOL (Version 1.1.1)
+# Fix EOL (Version 1.2.0)
 dos2unix -U *.txt
-chmod -x *.txt docs/*
 
 %build
 lazbuild --widgetset=gtk2 -B winff.lpr
