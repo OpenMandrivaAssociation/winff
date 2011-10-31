@@ -26,7 +26,7 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 dos2unix -U *.txt
 
 %build
-lazbuild --widgetset=gtk2 -B winff.lpr
+lazbuild --ws=gtk2 -B winff.lpr
 
 %install
 rm -rf %{buildroot}
