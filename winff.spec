@@ -23,7 +23,7 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 %setup -q -n %{name}
 
 # Fix EOL (Version 1.2.0)
-dos2unix -U *.txt
+dos2unix *.txt
 
 %build
 
