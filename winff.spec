@@ -1,7 +1,7 @@
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
-Version:	1.3.2
-Release:	%mkrel 1
+Version:	1.4.0
+Release:	%mkrel 0
 License:	GPLv3
 Group:		Video
 Url:		http://winff.org
