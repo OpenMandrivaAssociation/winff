@@ -6,6 +6,7 @@ License:	GPLv3
 Group:		Video
 Url:		http://winff.org
 Source0:	http://winff.googlecode.com/files/%{name}-%{version}-source.tar.gz
+Patch0:    winff-1.4.0-generate-dwarf.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 BuildRequires:	lazarus
@@ -22,6 +23,7 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 %prep
 %setup -q -n %{name}
 
+%patch0 -p1
 # Fix EOL (Version 1.2.0)
 dos2unix *.txt
 
