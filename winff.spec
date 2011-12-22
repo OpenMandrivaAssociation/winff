@@ -1,3 +1,6 @@
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
 Version:	1.4.0
