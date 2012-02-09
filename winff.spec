@@ -9,6 +9,7 @@ License:	GPLv3
 Group:		Video
 Url:		http://winff.org
 Source0:	http://winff.googlecode.com/files/%{name}-%{version}-source.tar.gz
+Patch0:		winff-1.4.1-target.patch
 BuildRequires:	lazarus
 BuildRequires:	dos2unix
 Requires:	ffmpeg
@@ -22,11 +23,12 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1 -b .target~
 # Fix EOL (Version 1.2.0)
 dos2unix *.txt
 
 %build
-lazbuild --ws=gtk2 --os=linux -B winff.lpr
+lazbuild --ws=gtk2 -B winff.lpr
 
 %install
 %__rm -rf %{buildroot}
