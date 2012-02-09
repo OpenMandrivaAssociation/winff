@@ -3,15 +3,12 @@
 
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
-Version:	1.4.0
-Release:	%mkrel 0
+Version:	1.4.1
+Release:	%mkrel 1
 License:	GPLv3
 Group:		Video
 Url:		http://winff.org
 Source0:	http://winff.googlecode.com/files/%{name}-%{version}-source.tar.gz
-Patch0:    winff-1.4.0-generate-dwarf.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
-
 BuildRequires:	lazarus
 BuildRequires:	dos2unix
 Requires:	ffmpeg
@@ -25,43 +22,39 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 
 %prep
 %setup -q -n %{name}
-
-%patch0 -p1
 # Fix EOL (Version 1.2.0)
 dos2unix *.txt
 
 %build
-
-lazbuild --ws=gtk2 -B winff.lpr
+lazbuild --ws=gtk2 --os=linux -B winff.lpr
 
 %install
-rm -rf %{buildroot}
-
-mkdir -p %{buildroot}{%{_bindir},%{_datadir}/%{name}/languages}
+%__rm -rf %{buildroot}
+%__mkdir_p %{buildroot}{%{_bindir},%{_datadir}/%{name}/languages}
 
 # Install winff binary
-install %{name} %{buildroot}%{_bindir}
+%__install %{name} %{buildroot}%{_bindir}
 
 # Install languages
-install languages/*.po %{buildroot}%{_datadir}/%{name}/languages
+%__install languages/*.po %{buildroot}%{_datadir}/%{name}/languages
 
 # Install presets
-install presets.xml %{buildroot}%{_datadir}/%{name}
+%__install presets.xml %{buildroot}%{_datadir}/%{name}
 
-mkdir -p %{buildroot}{%{_datadir}/pixmaps,%{_datadir}/applications,%{_mandir}/man1}
+%__mkdir_p %{buildroot}{%{_datadir}/pixmaps,%{_datadir}/applications,%{_mandir}/man1}
 
 # Install man page
-install %{name}.1 %{buildroot}%{_mandir}/man1
+%__install %{name}.1 %{buildroot}%{_mandir}/man1
 
 # Install icons
-install winff-icons/48x48/%{name}.png %{buildroot}%{_datadir}/pixmaps
+%__install winff-icons/48x48/%{name}.png %{buildroot}%{_datadir}/pixmaps
 for i in 16 24 32 48; do
-	mkdir -p %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
-	install winff-icons/"$i"x"$i"/*.png %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
+	%__mkdir_p %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
+	%__install winff-icons/"$i"x"$i"/*.png %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
 done
 
 # Desktop file
-cat > %{buildroot}%{_datadir}/applications/%{name}.desktop << EOF
+%__cat > %{buildroot}%{_datadir}/applications/%{name}.desktop << EOF
 [Desktop Entry]
 Type=Application
 Name=WinFF
@@ -73,7 +66,7 @@ Categories=AudioVideo;Video;
 EOF
 
 %clean
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
