@@ -3,13 +3,12 @@
 
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
-Version:	1.4.1
-Release:	%mkrel 1
+Version:	1.4.2
+Release:	1
 License:	GPLv3
 Group:		Video
 Url:		http://winff.org
 Source0:	http://winff.googlecode.com/files/%{name}-%{version}-source.tar.gz
-Patch0:		winff-1.4.1-target.patch
 BuildRequires:	lazarus
 BuildRequires:	dos2unix
 Requires:	ffmpeg
@@ -23,7 +22,6 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1 -b .target~
 # Fix EOL (Version 1.2.0)
 dos2unix *.txt
 
@@ -31,7 +29,6 @@ dos2unix *.txt
 lazbuild --ws=gtk2 -B winff.lpr
 
 %install
-%__rm -rf %{buildroot}
 %__mkdir_p %{buildroot}{%{_bindir},%{_datadir}/%{name}/languages}
 
 # Install winff binary
@@ -67,11 +64,7 @@ Icon=%{name}
 Categories=AudioVideo;Video;
 EOF
 
-%clean
-%__rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
 %doc *.txt docs/*
 %{_bindir}/%{name}
 %{_datadir}/%{name}
@@ -79,3 +72,45 @@ EOF
 %{_datadir}/pixmaps/*.png
 %{_iconsdir}/*
 %{_mandir}/man1/*
+
+
+%changelog
+* Thu Feb 09 2012 Andrey Bondrov <abondrov@mandriva.org> 1.4.1-1mdv2011.0
++ Revision: 772352
+- Add patch0 to remove hardcoded build target
+- New version 1.4.1
+
+* Thu Dec 22 2011 Guilherme Moro <guilherme@mandriva.com> 1.4.0-0
++ Revision: 744444
+- disable debug packages
+- enable generating dwarf
+- updated to version 1.4.0
+
+* Tue Nov 01 2011 Alexander Khrukin <akhrukin@mandriva.org> 1.3.2-1
++ Revision: 709261
+- version bump
+
+* Tue Nov 01 2011 Александр Казанцев <kazancas@mandriva.org> 1.3.1-3
++ Revision: 708679
++ rebuild (emptylog)
+
+* Sat Sep 11 2010 Ahmad Samir <ahmadsamir@mandriva.org> 1.3.1-1mdv2011.0
++ Revision: 577154
+- update to 1.3.1
+
+* Fri Aug 06 2010 Ahmad Samir <ahmadsamir@mandriva.org> 1.3.0-1mdv2011.0
++ Revision: 566545
+- update to 1.3.0
+
+* Thu Feb 04 2010 Jérôme Brenier <incubusss@mandriva.org> 1.2.0-1mdv2010.1
++ Revision: 500607
+- new version 1.2.0
+- drop no more needed permissions fix
+
+* Thu Dec 03 2009 Jérôme Brenier <incubusss@mandriva.org> 1.1.1-1mdv2010.1
++ Revision: 472887
+--pcp option no more needed for lazbuild
+- add Requires: xterm
+- initial import
+- Created package structure for winff.
+
