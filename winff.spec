@@ -3,12 +3,13 @@
 
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
-Version:	1.5.3
-Release:	2
+Version:	1.5.5
+Release:	1
 License:	GPLv3
 Group:		Video
-Url:		http://winff.org
+Url:		https://github.com/WinFF/winff/
 Source0:	http://winff.googlecode.com/files/%{name}-%{version}-source.tar.gz
+Patch1:		enable-build-with-lazarus-1.8.patch
 BuildRequires:	lazarus
 BuildRequires:	dos2unix
 Requires:	ffmpeg
@@ -22,11 +23,12 @@ convert mpeg's, flv's, and mov's, all into avi's all at once.
 
 %prep
 %setup -q -n %{name}
+%autopatch -p1
 # Fix EOL (Version 1.2.0)
 dos2unix *.txt
 
 %build
-lazbuild --ws=gtk2 -B winff.lpr
+lazbuild --ws=qt5 -B winff.lpr
 
 %install
 %__mkdir_p %{buildroot}{%{_bindir},%{_datadir}/%{name}/languages}

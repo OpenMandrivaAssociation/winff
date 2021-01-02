@@ -1,0 +1,17 @@
+Description: Lazarus 1.8 deprecated the RemoveDirUTF8 and UTF8ToConsole
+ functions in FileUtil unit. Instead, use those from LazUTF8 and LazFileUtils.
+Author: Paul Gevers <elbrus@debian.org>
+
+Index: winff/unit1.pas
+===================================================================
+--- winff.orig/unit1.pas
++++ winff/unit1.pas
+@@ -29,7 +29,7 @@ uses
+   laz_xmlcfg, dom, xmlread, xmlwrite, StdCtrls, Buttons, ActnList, Menus, unit2, unit3,
+   unit4, unit5, gettext, translations, process
+   {$IFDEF TRANSLATESTRING}, DefaultTranslator{$ENDIF}, ExtCtrls, ComCtrls, Spin, UTF8Process,
+-  PoTranslator, types, FileUtil, regexpr;
++  PoTranslator, types, FileUtil, regexpr, LazUTF8, LazFileUtils;
+ 
+ type
+ 
