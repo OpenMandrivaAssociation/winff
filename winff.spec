@@ -12,6 +12,7 @@ Source0:	http://winff.googlecode.com/files/%{name}-%{version}-source.tar.gz
 Patch1:		enable-build-with-lazarus-1.8.patch
 BuildRequires:	lazarus
 BuildRequires:	dos2unix
+BuildRequires:	pkgconfig(x11)
 Requires:	ffmpeg
 Requires:	xterm
 
