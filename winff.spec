@@ -4,16 +4,16 @@
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
 Version:	1.6.3
-Release:	1
+Release:	2
 License:	GPLv3
 Group:		Video
 Url:		https://github.com/WinFF/winff/
 Source0:	https://github.com/WinFF/winff/archive/refs/tags/%{name}-%{version}.tar.gz
-
 BuildRequires:	lazarus
 BuildRequires:	dos2unix
 BuildRequires:	pkgconfig(x11)
 Requires:	ffmpeg
+Requires:	xterm
 
 %description
 WinFF is a GUI for the command line video converter, FFMPEG. It will 
@@ -22,12 +22,12 @@ multiple files in multiple formats at one time. You can for example
 convert mpeg's, flv's, and mov's, all into avi's all at once.
 
 %prep
-%autosetup -n %{name}-%{name}-%{version}
+%autosetup -n %{name}-%{name}-%{version} -p1
 dos2unix winff/*.txt
 
 %build
 pushd winff
-lazbuild --ws=qt5 -B winff.lpr
+lazbuild --ws=qt6 -B winff.lpr
 
 %install
 
