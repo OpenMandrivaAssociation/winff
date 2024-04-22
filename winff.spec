@@ -3,8 +3,8 @@
 
 Summary:	A graphical interface for the video converter ffmpeg
 Name:		winff
-Version:	1.6.3
-Release:	2
+Version:	1.6.4
+Release:	1
 License:	GPLv3
 Group:		Video
 Url:		https://github.com/WinFF/winff/
